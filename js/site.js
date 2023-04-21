@@ -16,13 +16,26 @@ return parseFloat(mortgage.toFixed(2));
 //link submit button to calculatemonthlypayment function
 form.onsubmit = (e) => {
     e.preventDefault();
+    validate();
 
     let monthlyPayment = calculateMonthlyPayment(loanAmount, term.value, interestRate.value);
 
     document.getElementById('monthlyPayment').innerHTML = `$ ${monthlyPayment}`;
 }
 
+function validate(){
+    if(
+        loanAmount.value ==="" || term.value ==="" || interestRate.value ===""
+    ){
+         
+ let alert = Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'All fields must be completed.',
+  });
+    }
 
+}
 
 
 function remainingBalance() {
