@@ -1,12 +1,4 @@
-function displayMessage() {
-   let msg = document.getElementById('message').value;
-    //alert(msg);
-
-    Swal.fire(
-        {
-            backdrop: false,
-            title: 'App Name',
-            text: msg
-        }
-    );
-}
+//inputs
+const loanAmount = document.getElementById('loanAmount')
+const term = document.getElementById('term')
+const interestRate = document.getElementById('interestRate')
