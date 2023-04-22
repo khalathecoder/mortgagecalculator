@@ -1,5 +1,5 @@
 
-//validate if numbers are positive and if are actual numbers
+//validate if numbers are positive and if are actual numeric values
 function validate() {
 
     let loanAmount = document.getElementById('loanAmount').value;
@@ -29,58 +29,64 @@ function validate() {
           });
         document.loan-form.interestRate.value;
     } else {
-        // alert("Validation complete");
         calculate(parseFloat(loanAmount), parseInt(term), parseFloat(interestRate));
     }
     } 
-//calculate monthly payment
+//formula to calculate monthly payment
 function calculate(loanAmount, term, interestRate) {
     i = interestRate/100;
 let mortgage = (loanAmount) * (i/12) / (1 - Math.pow(1 + (i/12), -term));
 
-mortgage.toFixed(2); //replace with alert to test******
+mortgage.toFixed(2); 
 
 // formulas
-let loanAmountDec = loanAmount.toFixed(2)
+let loanAmountDec = loanAmount.toFixed(2).toLocaleString();
 let totalCost = (mortgage * term).toFixed(2);
 let totalInterest = (totalCost - loanAmount).toFixed(2);
 
-//principle, total interest and total cost displayed on calculate
+//principle, total interest and total cost displayed on calculate submit
 let result="";
 
-result += `<table class="table-info">`;
-result += `<tr><td>Total Principle:</td>`;
-result += `<td class="results">${loanAmountDec}</td></tr>`;
+result += `<table>`;
+result += `<tr><th>Total Principle:</th>`;
+result += `<td>&emsp;&emsp;${loanAmountDec}</td></tr>`;
+ 
+result += `<tr><th>Total Interest:</th>`;
+result += `<td>&emsp;&emsp;${totalInterest}</td></tr>`;
 
-result += `<tr><td>Total Interest:</td>`;
-result += `<td class="results">${totalInterest}</td></tr>`;
-
-result += `<tr><td>Total Cost:</td>`;
-result += `<td class="results">${totalCost}</td></tr>`;
+result += `<tr><th>Total Cost:</th>`;
+result += `<td>&emsp;&emsp;${totalCost}</td></tr>`;
 
 result += `</table>`;
 
 document.getElementById('loan-info').innerHTML = result;
 
 
+// single payment below Your monthly payments header
+let singlePayment = "";
+singlePayment += `<h4>$${mortgage.toFixed(2)}</h4>`;
+document.getElementById('monthlyPayment').innerHTML = singlePayment;
+
+
+
 //table rows
 let table="";
 
-table += `<table class="table table-striped">`;
+table += `<table class="table table-striped table-light rounded-4 shadow">`;
 table += `<tr>`;
-    table += `<td>1</td>`;
-    table += `<td>${mortgage.toFixed(2)}</td>`;
-    table += `<td>&nbsp;</td>`;
-    table += `<td>&nbsp;</td>`;
-    table += `<td>&nbsp;</td>`;
-    table += `<td>${(loanAmount).toFixed(2)}</td>`;
+    table += `<td></td>`;
+    table += `<td></td>`;
+    table += `<td></td>`;
+    table += `<td></td>`;
+    table += `<td></td>`;
+    table += `<td></td>`;
 table += `</tr>`;
 
 let currentBalance = loanAmount;
 let paymentCounter = 1;
 let interestPaid = 0;
 
-while(currentBalance > 0) {
+while(currentBalance > 1) {
     //formulas
     towardsInterest = (i/12) * currentBalance;
     towardsBalance = mortgage - towardsInterest;
@@ -104,5 +110,7 @@ table += `</table>`;
 
 //display results
 document.getElementById('table').innerHTML = table;
+
+document.getElementById('mortgage').innerHTML = monthlyPayment;
 
 } 

@@ -102,12 +102,9 @@
 
   }
 
-  .results {
-    font-weight: bolder;
-  }
-
-  .table-info {
-    text-align: center;
+  div#loan-info {
+    justify-content: center;
+    font-size: 1.7em;
   }
 
   .bgImage{
