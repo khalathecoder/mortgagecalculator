@@ -1,20 +1,60 @@
-function getValues(){
-//inputs
-const loanAmount = document.getElementById('loanAmount').value;
-const term = document.getElementById('term').value;
-const interestRate = document.getElementById('interestRate').value;
-const form = document.getElementById('mortgage').value;
 
+function reset() {
+    // let loanInfo = document.getElementById('loan-info');
+    // loanInfo.innerHTML = '';
+    // let table = document.getElementById('table');
+    // table.innerHTML = '';
 }
+
+function validate() {
+
+    let loanAmount = document.getElementById('loanAmount').value;
+    let term = document.getElementById('term').value;
+    let interestRate = document.getElementById('interestRate').value;
+
+    // checks to see if number is less than 0 or not a number at all; runs through all entered values.
+    if (loanAmount <= 0 || isNaN(Number(loanAmount))) {
+        alert("Please enter valid loan amount");
+        document.loan-form.loanAmount.value;
+    } else if (term <= 0 || isNaN(Number(loanAmount))) {
+        alert("Please enter valid term value");
+        document.loan-form.term.value;
+    } else if (interestRate <= 0 || isNaN(Number(interestRate))) {
+        alert("Please enter valid interestRate");
+        document.loan-form.interestRate.value;
+    } else {
+        // alert("Validation complete");
+        calculate(parseFloat(loanAmount), parseInt(term), parseFloat(interestRate));
+    }
+    } 
+    
+
 
 
 //calculate monthly payment
 function calculate(loanAmount, term, interestRate) {
-let mortgage = loanAmount.value * (interestRate/1200) / (1 - Math.pow(1 + (interestRate/1200), -term));
+    i = interestRate/100;
+let mortgage = (loanAmount) * (i/12) / (1 - Math.pow(1 + (i/12), -term));
 
-return parseFloat(mortgage.toFixed(2));
+// return mortgage.toFixed(2);
+alert(mortgage.toFixed(2));
 
-var result="";
+document.getElementById
+
+}
+
+
+// display monthly payment
+// let monthlyPayment = calculate(loanAmount, term.value, interestRate.value);
+// document.getElementById('monthlyPayment').innerHTML = `$${monthlyPayment}`;
+    
+
+
+
+function displayLoanInfo() {
+    
+
+let result="";
 
 result += `<table>`;
 result += `<tr><td>Total Principle:</td>`;
@@ -29,20 +69,13 @@ result += `<td class="text-end"> ${term} </td></tr>`;
 result += `</table>`;
 
 document.getElementById('loan_info').innerHTML = result;
-
 }
-
 
     
 
+function displayTable(){
 
-
-    // display monthly payment
-    let monthlyPayment = calculate(loanAmount, term.value, interestRate.value);
-    document.getElementById('monthlyPayment').innerHTML = `$ ${monthlyPayment}`;
-
-
-
+}
 
 
 

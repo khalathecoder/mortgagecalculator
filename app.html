@@ -77,38 +77,42 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="shadow rounded-3 p-3 white my-5">
-                    
+
                     <form id="loan-form">
-                            <div class="input-field mb-3">
-                                <label for="loanAmount">Loan Amount</label>
-                                <input type="number" class="form-control" id="loanAmount" placeholder="25000" value="25000" />
-                            </div>
-                            <div class="input-field mb-3">
-                                <label for="term">Term (Months)</label>
-                                <input type="number" class="form-control" placeholder="60" value="60" id="term" />
-                            </div>
-                            <div class="input-field mb-3">
-                                <label for="interestRate"> Interest Rate (%)</label>
-                                <input type="number" class="form-control" id="interestRate" placeholder="5" value="5"/>
-                            </div>
-                            <!-- button -->
-                    <div class="row row-cols-1">
-                        <button class="btn btn-dark" onclick="getValues()" type="submit">
-                            Calculate
-                        </button>
-                    </div>
+                        <div class="input-field mb-3">
+                            <label for="loanAmount">Loan Amount</label>
+                            <input type="number" class="form-control" id="loanAmount" placeholder="25000"
+                                value="25000" />
+                        </div>
+                        <div class="input-field mb-3">
+                            <label for="term">Term (Months)</label>
+                            <input type="number" class="form-control" placeholder="60" value="60" id="term" />
+                        </div>
+                        <div class="input-field mb-3">
+                            <label for="interestRate"> Interest Rate (%)</label>
+                            <input type="number" class="form-control" id="interestRate" placeholder="5" value="5" />
+                        </div>
+                        <!-- button -->
+                        <div class="row row-cols-1">
+                            <button class="btn btn-dark" onclick="validate()">
+                                Calculate
+                            </button>
+                            <button class="btn btn-dark mt-3" onclick="reset()">
+                                Reset
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-7">
                 <div class=" shadow rounded-3 p-3 white my-5 ">
                     <h4 class="text-center mb-4"> Your Monthly Payments</h4>
-                        <h4 id="monthlyPayment" class="text-center">0.00
-                         <!-- calculated amount goes here -->   
-                        </h4>
-                        <div id="loan_info">
-                            LOAN INFO
-                        </div>
+                    <h4 id="monthlyPayment" class="text-center">0.00
+                        <!-- calculated amount goes here -->
+                    </h4>
+                    <div id="loan-info">
+                        LOAN INFO
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,7 +151,7 @@
     <!-- APP JS -->
     <script src="/js/site.js"></script>
     <script>
-        
+
     </script>
 </body>
 
