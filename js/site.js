@@ -1,11 +1,8 @@
 
-// function reset() {
-//     // let loanInfo = document.getElementById('loan-info');
-//     // loanInfo.innerHTML = '';
-//     // let table = document.getElementById('table');
-//     // table.innerHTML = '';
-// }
 
+
+
+//validate if numbers are positive and if are actual numbers
 function validate() {
 
     let loanAmount = document.getElementById('loanAmount').value;
@@ -27,8 +24,6 @@ function validate() {
         calculate(parseFloat(loanAmount), parseInt(term), parseFloat(interestRate));
     }
     } 
-    
-
 //calculate monthly payment
 function calculate(loanAmount, term, interestRate) {
     i = interestRate/100;
@@ -39,11 +34,10 @@ mortgage.toFixed(2); //replace with alert to test******
 // formulas
 let loanAmountDec = loanAmount.toFixed(2)
 let totalCost = (mortgage * term).toFixed(2);
-let totalInterest = (totalCost - mortgage).toFixed(2);
+let totalInterest = (totalCost - loanAmount).toFixed(2);
 
-//principle, total interest and total cost display
+//principle, total interest and total cost displayed on calculate
 let result="";
-
 
 result += `<table class="table-info">`;
 result += `<tr><td>Total Principle:</td>`;
@@ -66,7 +60,7 @@ let table="";
 table += `<table class="table table-striped">`;
 table += `<tr>`;
     table += `<td>0</td>`;
-    table += `<td>${mortgage}</td>`;
+    table += `<td>${mortgage.toFixed(2)}</td>`;
     table += `<td>&nbsp;</td>`;
     table += `<td>&nbsp;</td>`;
     table += `<td>&nbsp;</td>`;
@@ -78,42 +72,28 @@ let paymentCounter = 1;
 let interestPaid = 0;
 
 while(currentBalance > 0) {
-    //create rows
+    //formulas
     towardsInterest = (i/12) * currentBalance;
     towardsBalance = mortgage - towardsInterest;
     interestPaid = interestPaid + towardsInterest;
     currentBalance = currentBalance - towardsBalance;
 
 
-    //display row
+    //build table for data
     table += `<tr>`;
         table += `<td>${paymentCounter}</td>`;
-        table += `<td>${mortgage}</td>`;
-        table += `<td>${towardsBalance}</td>`;
-        table += `<td>${towardsInterest}</td>`;
-        table += `<td>${interestPaid}</td>`;
-        table += `<td>${currentBalance}</td>`;
+        table += `<td>${mortgage.toFixed(2)}</td>`;
+        table += `<td>${towardsBalance.toFixed(2)}</td>`;
+        table += `<td>${towardsInterest.toFixed(2)}</td>`;
+        table += `<td>${interestPaid.toFixed(2)}</td>`;
+        table += `<td>${currentBalance.toFixed(2)}</td>`;
     table += `</tr>`;
 
     paymentCounter++;
 }
-
 table += `</table>`;
+
+//display results
 document.getElementById('table').innerHTML = table;
 
 } 
-
-
-
-
-
-
-
-
-// alert = Swal.fire({
-//     icon: 'error',
-//     title: 'Oops...',
-//     text: 'All fields must be completed.',
-//   });
-
-
