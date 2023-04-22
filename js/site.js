@@ -8,13 +8,25 @@ function validate() {
 
     // checks to see if number is less than 0 or not a number at all; runs through all entered values.
     if (loanAmount <= 0 || isNaN(Number(loanAmount))) {
-        alert("Please enter valid loan amount");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid loan amount.',
+          });
         document.loan-form.loanAmount.value;
     } else if (term <= 0 || isNaN(Number(loanAmount))) {
-        alert("Please enter valid term value");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid term.',
+          });
         document.loan-form.term.value;
     } else if (interestRate <= 0 || isNaN(Number(interestRate))) {
-        alert("Please enter valid interestRate");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid interest rate.',
+          });
         document.loan-form.interestRate.value;
     } else {
         // alert("Validation complete");
