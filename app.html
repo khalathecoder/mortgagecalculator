@@ -97,9 +97,9 @@
                             <button class="btn btn-dark" onclick="validate()">
                                 Calculate
                             </button>
-                            <button class="btn btn-dark mt-3" onclick="reset()">
+                            <!-- <button class="btn btn-dark mt-3" onclick="reset()">
                                 Reset
-                            </button>
+                            </button> -->
                         </div>
                     </form>
                 </div>
@@ -107,17 +107,33 @@
             <div class="col-md-7">
                 <div class=" shadow rounded-3 p-3 white my-5 ">
                     <h4 class="text-center mb-4"> Your Monthly Payments</h4>
-                    <h4 id="monthlyPayment" class="text-center">0.00
+                    <h4 id="monthlyPayment" class="text-center">
                         <!-- calculated amount goes here -->
                     </h4>
                     <div id="loan-info">
-                        LOAN INFO
+                        <!-- total principle etc goes here -->
                     </div>
                 </div>
             </div>
         </div>
-        <div id="table">
-            TABLE
+        <div table-responsive>
+            <table class="table table-striped">
+                </thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principle</th>
+                    <th>Interest</th>
+                    <th>Total Interest (Paid) </th>
+                    <th>Balance</th>
+                </tr>
+                </thead>
+                <tbody id="table" class="table-hover">
+                    
+                        <!-- calculated values go here -->
+                    
+                </tbody>
+            </table>
         </div>
     </main>
 
