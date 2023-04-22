@@ -1,7 +1,4 @@
 
-
-
-
 //validate if numbers are positive and if are actual numbers
 function validate() {
 
@@ -59,7 +56,7 @@ let table="";
 
 table += `<table class="table table-striped">`;
 table += `<tr>`;
-    table += `<td>0</td>`;
+    table += `<td>1</td>`;
     table += `<td>${mortgage.toFixed(2)}</td>`;
     table += `<td>&nbsp;</td>`;
     table += `<td>&nbsp;</td>`;

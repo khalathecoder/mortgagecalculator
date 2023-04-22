@@ -6,7 +6,7 @@
     --kw-body-font: "Roboto", sans-serif;
   
     /* colors */
-    --kw-primary-color: #0b2057;
+    --kw-primary-color: #4b4b4b;
     --kw-secondary-color: #FAC539;
     --kw-highlight-color: #2DE2FA;
     --kw-dark-color: #212121;
@@ -87,7 +87,7 @@
   }
 
   .checklist>li i {
-    color: var(--kw-highlight-color);
+    color:#e79fcf;
     padding-right: .5rem;
   }
 
@@ -97,7 +97,9 @@
   }
 
   .appLogo {
-    max-width: 400px;
+    max-width: 500px;
+    border-radius: 30px;
+
   }
 
   .results {
@@ -107,3 +109,13 @@
   .table-info {
     text-align: center;
   }
+
+  .bgImage{
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(/img/pexels-karolina-grabowska-4386366.jpg);
+        /* rgba is transparency as opposed to rgb which is color*/
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed
+}
