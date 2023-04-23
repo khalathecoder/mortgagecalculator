@@ -47,17 +47,17 @@ let totalInterest = (totalCost - loanAmount).toFixed(2);
 //principle, total interest and total cost displayed on calculate submit
 let result="";
 
-result += `<table>`;
-result += `<tr><th>Total Principle:</th>`;
-result += `<td>&emsp;&emsp;$${loanAmountDec}</td></tr>`;
+result += `<div class="row row-cols-2">`;
+result += `<div class="col-6">Total Principle:</div>`;
+result += `<div class="col-6 text-end">$${loanAmountDec}</div>`;
  
-result += `<tr><th>Total Interest:</th>`;
-result += `<td>&emsp;&emsp;$${totalInterest}</td></tr>`;
+result += `<div class="col-6">Total Interest:</div>`;
+result += `<div class="col-6 text-end">$${totalInterest}</div>`;
 
-result += `<tr><th>Total Cost:</th>`;
-result += `<td>&emsp;&emsp;$${totalCost}</td></tr>`;
+result += `<div class="col-6">Total Cost:</div>`;
+result += `<div class="col-6 text-end">$${totalCost}</div>`;
 
-result += `</table>`;
+result += `</div>`;
 
 document.getElementById('loan-info').innerHTML = result;
 
