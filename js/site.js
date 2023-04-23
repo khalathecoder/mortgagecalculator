@@ -72,7 +72,7 @@ document.getElementById('monthlyPayment').innerHTML = singlePayment;
 //table rows
 let table="";
 
-table += `<table class="table table-striped table-light rounded-4 shadow">`;
+table += `<table class="table table-striped w-auto">`;
 table += `<tr>`;
     table += `<td></td>`;
     table += `<td></td>`;
