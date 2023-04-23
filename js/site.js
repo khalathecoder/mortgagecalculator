@@ -49,8 +49,8 @@ let result="";
 
 result += `<div class="row row-cols-2">`;
 result += `<div class="col-6">Total Principle:</div>`;
-result += `<div class="col-6 text-end">$${loanAmountDec}</div>`;
- 
+result += `<div class="col-6 text-end">$${loanAmountDec}</div> `;
+
 result += `<div class="col-6">Total Interest:</div>`;
 result += `<div class="col-6 text-end">$${totalInterest}</div>`;
 
@@ -63,7 +63,7 @@ document.getElementById('loan-info').innerHTML = result;
 
 // single payment below Your monthly payments header
 let singlePayment = "";
-singlePayment += `<h4>$${mortgage.toFixed(2)}</h4>`;
+singlePayment += `$${mortgage.toFixed(2)}`;
 document.getElementById('monthlyPayment').innerHTML = singlePayment;
 
 //table rows
