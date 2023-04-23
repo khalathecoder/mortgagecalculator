@@ -106,18 +106,115 @@
         <div class="col-lg-8 col-12">
           <pre class="line-numbers">
                     <code class="language-js">
-function displayMessage() {
-    let msg = document.getElementById('message').value;
-        //alert(msg);
-    
-        Swal.fire(
-            {
-                backdrop: false,
-                title: 'App Name',
-                text: msg
-            }
-        );
+//validate if numbers are positive and if are actual numeric values
+function validate() {
+
+    let loanAmount = document.getElementById('loanAmount').value;
+    let term = document.getElementById('term').value;
+    let interestRate = document.getElementById('interestRate').value;
+
+    // checks to see if number is less than 0 or not a number at all; runs through all entered values.
+    if (loanAmount <= 0 || isNaN(Number(loanAmount))) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid loan amount.',
+            });
+        document.loan-form.loanAmount.value;
+    } else if (term <= 0 || isNaN(Number(loanAmount))) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid term.',
+            });
+        document.loan-form.term.value;
+    } else if (interestRate <= 0 || isNaN(Number(interestRate))) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please enter a valid interest rate.',
+            });
+        document.loan-form.interestRate.value;
+    } else {
+        calculate(parseFloat(loanAmount), parseInt(term), parseFloat(interestRate));
     }
+    } 
+//formula to calculate monthly payment
+function calculate(loanAmount, term, interestRate) {
+    i = interestRate/100;
+let mortgage = (loanAmount) * (i/12) / (1 - Math.pow(1 + (i/12), -term));
+
+mortgage.toFixed(2); 
+
+// formulas
+let loanAmountDec = loanAmount.toFixed(2).toLocaleString();
+let totalCost = (mortgage * term).toFixed(2);
+let totalInterest = (totalCost - loanAmount).toFixed(2);
+
+//principle, total interest and total cost displayed on calculate submit
+let result="";
+
+result += `&lt;table>`;
+result += `&lt;tr>&lt;th>Total Principle:&lt;/th>`;
+result += `&lt;td>&emsp;&emsp;${loanAmountDec}&lt;/td>&lt;/tr>`;
+    
+result += `&lt;tr>&lt;th>Total Interest:&lt;/th>`;
+result += `&lt;td>&emsp;&emsp;${totalInterest}&lt;/td>&lt;/tr>`;
+
+result += `&lt;tr>&lt;th>Total Cost:&lt;/th>`;
+result += `&lt;td>&emsp;&emsp;${totalCost}&lt;/td>&lt;/tr>`;
+
+result += `&lt;/table>`;
+
+document.getElementById('loan-info').innerHTML = result;
+
+// single payment below Your monthly payments header
+let singlePayment = "";
+singlePayment += `&lt;h4>$${mortgage.toFixed(2)}&lt;/h4>`;
+document.getElementById('monthlyPayment').innerHTML = singlePayment;
+
+//table rows
+let table="";
+
+table += `&lt;table class="table table-striped w-auto">`;
+table += `&lt;tr>`;
+    table += `&lt;td>&lt;/td>`;
+    table += `&lt;td>&lt;/td>`;
+    table += `&lt;td>&lt;/td>`;
+    table += `&lt;td>&lt;/td>`;
+    table += `&lt;td>&lt;/td>`;
+    table += `&lt;td>&lt;/td>`;
+table += `&lt;/tr>`;
+
+let currentBalance = loanAmount;
+let paymentCounter = 1;
+let interestPaid = 0;
+
+while(currentBalance > 1) {
+    //formulas
+    towardsInterest = (i/12) * currentBalance;
+    towardsBalance = mortgage - towardsInterest;
+    interestPaid = interestPaid + towardsInterest;
+    currentBalance = currentBalance - towardsBalance;
+
+
+    //build table for data
+    table += `&lt;tr>`;
+        table += `&lt;td>${paymentCounter}&lt;/td>`;
+        table += `&lt;td>${mortgage.toFixed(2)}&lt;/td>`;
+        table += `&lt;td>${towardsBalance.toFixed(2)}&lt;/td>`;
+        table += `&lt;td>${towardsInterest.toFixed(2)}&lt;/td>`;
+        table += `&lt;td>${interestPaid.toFixed(2)}&lt;/td>`;
+        table += `&lt;td>${currentBalance.toFixed(2)}&lt;/td>`;
+    table += `&lt;/tr>`;
+
+    paymentCounter++;
+}
+table += `&lt;/table>`;
+
+//display results
+document.getElementById('table').innerHTML = table;
+} 
                     </code>
                 </pre>
         </div>

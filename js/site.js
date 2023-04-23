@@ -49,25 +49,22 @@ let result="";
 
 result += `<table>`;
 result += `<tr><th>Total Principle:</th>`;
-result += `<td>&emsp;&emsp;${loanAmountDec}</td></tr>`;
+result += `<td>&emsp;&emsp;$${loanAmountDec}</td></tr>`;
  
 result += `<tr><th>Total Interest:</th>`;
-result += `<td>&emsp;&emsp;${totalInterest}</td></tr>`;
+result += `<td>&emsp;&emsp;$${totalInterest}</td></tr>`;
 
 result += `<tr><th>Total Cost:</th>`;
-result += `<td>&emsp;&emsp;${totalCost}</td></tr>`;
+result += `<td>&emsp;&emsp;$${totalCost}</td></tr>`;
 
 result += `</table>`;
 
 document.getElementById('loan-info').innerHTML = result;
 
-
 // single payment below Your monthly payments header
 let singlePayment = "";
 singlePayment += `<h4>$${mortgage.toFixed(2)}</h4>`;
 document.getElementById('monthlyPayment').innerHTML = singlePayment;
-
-
 
 //table rows
 let table="";
@@ -97,11 +94,11 @@ while(currentBalance > 1) {
     //build table for data
     table += `<tr>`;
         table += `<td>${paymentCounter}</td>`;
-        table += `<td>${mortgage.toFixed(2)}</td>`;
-        table += `<td>${towardsBalance.toFixed(2)}</td>`;
-        table += `<td>${towardsInterest.toFixed(2)}</td>`;
-        table += `<td>${interestPaid.toFixed(2)}</td>`;
-        table += `<td>${currentBalance.toFixed(2)}</td>`;
+        table += `<td>$${mortgage.toFixed(2)}</td>`;
+        table += `<td>$${towardsBalance.toFixed(2)}</td>`;
+        table += `<td>$${towardsInterest.toFixed(2)}</td>`;
+        table += `<td>$${interestPaid.toFixed(2)}</td>`;
+        table += `<td>$${currentBalance.toFixed(2)}</td>`;
     table += `</tr>`;
 
     paymentCounter++;
@@ -110,7 +107,4 @@ table += `</table>`;
 
 //display results
 document.getElementById('table').innerHTML = table;
-
-document.getElementById('mortgage').innerHTML = monthlyPayment;
-
 } 
